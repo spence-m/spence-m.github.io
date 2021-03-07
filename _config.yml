@@ -1,43 +1,86 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+# Taken and customised from: https://github.com/daviddarnes/alembic/blob/main/_config.yml
 
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: Your awesome title
-email: your-email@example.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+# Site configuration
+# 1. Files excluded from Jekyll builds
+# 2. Build settings
+# 3. Gem settings
+# 4. Jekyll settings
+# 5. Collections
+# 6. Jekyll collections settings
+# 7. Site settings
+# 8. Site favicons & manifest icons
+# 9. Site navigation
+# 10. Build settings
 
-# Build settings
+# 1. Files excluded from Jekyll builds
+exclude:
+- .jekyll-cache
+
+# 2. Build settings
 markdown: kramdown
-theme: minima
+remote_theme: daviddarnes/alembic@main
 plugins:
   - jekyll-feed
+  - jekyll-remote-theme
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-include-cache
+  - jemoji
+  - jekyll-paginate
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+# 3. Gem settings
+paginate: 2
+paginate_path: /page:num
+
+# 4. Jekyll settings
+sass:
+  style: compressed
+permalink: pretty
+excerpt_separator: <!-- more -->
+timezone: Europe/London
+
+# 5. Collections
+collections:
+  posts:
+    title: Posts # Needed for Siteleaf
+    output: true
+
+# 6. Jekyll collections settings
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: page
+
+# 7. Site settings
+encoding: utf-8
+lang: en-GB
+title: "spence-m" # Site name or title, also used in jekyll-seo-tag
+description: "" # Site description and default description, also used in jekyll-seo-tag
+url: "https://spence-m.github.io" # Site url, also used in jekyll-seo-tag
+baseurl: ""
+repo: "https://github.com/spence-m/spence-m.github.io"
+email: ""
+google_analytics: 'G-SC8DB1CY6R'
+google_analytics_anonymize_ip: 'true'
+css_inline: true # Will insert all styles into a single <style> block in the <head> element and remove the style <link> reference
+
+# 8. Site favicons & manifest icons
+
+# 9. Site navigation
+navigation_header:
+- title: Home
+  url: /
+- title: About
+  url: /about
+
+navigation_footer:
+- title: ""
